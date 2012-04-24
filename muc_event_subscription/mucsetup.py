@@ -43,6 +43,11 @@ class MucSetup(sleekxmpp.ClientXMPP):
             self.send_presence('offline')
             self.disconnect(wait=True)
 
+##  Some XMPP forms are sent with xmlns="" in each field which causes the form
+##  parsing to break (this is an XML serializer bug on the server).
+##  Serializing the form again cleans out the xmlns="" attributes and allows
+##  the normal xmlns inheritance rules to take over.  This function reparses
+##  the form and allows it to work as expected according to XEP-0004.
 def reparse_form(form):
     from sleekxmpp.xmlstream import ET
     from sleekxmpp.plugins.xep_0004 import *
