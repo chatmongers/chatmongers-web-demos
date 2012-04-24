@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule http-bind http://<host>.chatwith.it:5280/http-bind [P]
+
