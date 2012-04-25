@@ -5,9 +5,11 @@ xmpp_pass="_mypassword_"
 
 domain_name=".chatwith.it"
 
+muc_name="push@muc.$domain_name"
+
 read -d '' message << EOF
 {
-	"to":"testmuc@muc.$domain_name",
+	"to":"$muc_name",
 	"body": "Message from API by $xmpp_user at `date`",
 	"message_attributes":{
 		"type": "groupchat"
